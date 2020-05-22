@@ -1,0 +1,2 @@
+1.此处的vant是自己新建的文件夹， 然后把vant-weapp库下的dist目录下的全部组件复制到vant目录下。
+(目前vant已经支持了npm的方式，但是由于node_modules目录下的代码是不会被编进dist目录下的，所以暂时只能用git方式使用。)
