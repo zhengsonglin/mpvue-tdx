@@ -1,5 +1,12 @@
 {
   "pages": [
+  	"pages/login/main",
+  	"pages/register/main",
+  	"pages/forgetPwd/main",
+  	"pages/home/main",
+  	"pages/question/main",
+  	"pages/taskCenter/main",
+  	"pages/userCenter/main",
     "pages/index/main",
     "pages/logs/main",
     "pages/counter/main"
@@ -7,7 +14,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "淘大熊",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -18,30 +25,54 @@
 
     "list": [{
       "text": "首页",
-      "pagePath": "pages/index/main",
+      "pagePath": "pages/home/main",
       "iconPath": "static/tabs/home.png",
       "selectedIconPath": "static/tabs/home-active.png"
     }, {
+      "text": "问题集",
+      "pagePath": "pages/question/main",
+      "iconPath": "static/tabs/orders.png",
+      "selectedIconPath": "static/tabs/orders-active.png"
+    }, {
       "text": "订单",
-      "pagePath": "pages/logs/main",
+      "pagePath": "pages/taskCenter/main",
+      "iconPath": "static/tabs/orders.png",
+      "selectedIconPath": "static/tabs/orders-active.png"
+    }, {
+      "text": "我",
+      "pagePath": "pages/userCenter/main",
       "iconPath": "static/tabs/orders.png",
       "selectedIconPath": "static/tabs/orders-active.png"
     }],
 
     "items": [{
       "name": "首页",
-      "pagePath": "pages/index/main",
+      "pagePath": "pages/home/main",
       "icon": "static/tabs/home.png",
       "activeIcon": "static/tabs/home-active.png"
     }, {
+      "name": "问题集",
+      "pagePath": "pages/question/main",
+      "icon": "static/tabs/orders.png",
+      "activeIcon": "static/tabs/orders-active.png"
+    }, {
       "name": "订单",
-      "pagePath": "pages/logs/main",
+      "pagePath": "pages/taskCenter/main",
+      "icon": "static/tabs/orders.png",
+      "activeIcon": "static/tabs/orders-active.png"
+    }, {
+      "name": "我",
+      "pagePath": "pages/userCenter/main",
       "icon": "static/tabs/orders.png",
       "activeIcon": "static/tabs/orders-active.png"
     }],
     "position": "bottom"
   },
   "usingComponents": {
-    "van-button": "/static/vant/button/index"
+    "van-button": "/static/vant/button/index",
+    "van-nav-bar": "/static/vant/nav-bar/index",
+    "van-toast": "/static/vant/toast/index",
+    "van-tabbar": "/static/vant/tabbar/index",
+  	"van-tabbar-item": "/static/vant/tabbar-item/index"
   }
 }

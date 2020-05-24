@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { formatTime } from '@/utils/index'
+import { formatTime } from '@/assets/js/util'
 import card from '@/components/card'
 
 export default {
