@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "淘大熊"
+  "navigationBarBackgroundColor": "#EE580F",
+	"navigationBarTitleText": "登录",
+	"navigationBarTextStyle": "white",
+	"enablePullDownRefresh": false,
+	"backgroundTextStyle": "dark"
 }

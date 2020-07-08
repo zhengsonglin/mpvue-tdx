@@ -1,8 +1,8 @@
 <template>
 	<div class="page-register h100 bg-fff">
-		<div class="header c-fff text-c">
+		<!--<div class="header c-fff text-c">
 			<p>找回密码</p>
-		</div>
+		</div>-->
 		<div class="content">
 			<div class="register-form">
 				<div class="login-input text-input">
@@ -21,7 +21,7 @@
 					<input type="password" id="txt_RePassWord" class="input-height" v-model.trim="form.repwd" placeholder="请确认密码">
 				</div>
 				<div class="btn-grop c-fff text-c" >
-					<van-button type="primary" block @click="handleRegister" :loading="loginBtn.isLoading" :loading-text="loginBtn.loadingText">提交密码</van-button>
+					<van-button type="primary" color="#EE580F" size="small" block @click="handleRegister" :loading="loginBtn.isLoading" :loading-text="loginBtn.loadingText">提交密码</van-button>
 				</div>
 			</div>
 		</div>
@@ -68,17 +68,26 @@
 						delete copyForm.repwd
 						this.hasCommit = true
 						this.loginBtn.isLoading = true
+						
+						setTimeout(()=>{
+							this.loginBtn.isLoading = false
+		                    this.$toast("设置成功！");
+		                    wx.navigateBack()
+						},2000)
+						/*
 						this.API.editPwd(copyForm).then((data)=>{
 							if (data.ErrorCode == 100) {
 								this.loginBtn.isLoading = false
 		                        this.$toast("设置成功！");
-		                        this.$router.push("login")
+		                        //this.$router.push("login")
+		                        wx.navigateBack()
 		                    } else {
 		                    	this.hasCommit = false
 		                        this.$toast.fail(data.Content)
 		                    }
 
 						})
+						*/
 					}
 				}
 				

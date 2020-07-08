@@ -1,8 +1,8 @@
 <template>
 	<div class="page-login h100 bg-fff">
-		<div class="header c-fff text-c">
+		<!--<div class="header c-fff text-c">
 			<p>登录</p>
-		</div>
+		</div>-->
 		<div class="content">
 			<div class="login-pic text-c">
 				<img src="../../assets/img/logo.png" />

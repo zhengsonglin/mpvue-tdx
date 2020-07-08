@@ -1,0 +1,7 @@
+{
+	"navigationBarBackgroundColor": "#EE580F",
+	"navigationBarTitleText": "预定任务明细",
+	"navigationBarTextStyle": "white",
+	"enablePullDownRefresh": false,
+	"backgroundTextStyle": "dark"
+}

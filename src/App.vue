@@ -34,6 +34,10 @@
 
 <style>
 	/*@import './assets/css/common.css';*/
+	@import 'assets/css/iconfont/icon-font.css';
+	html, body{
+		background: #f4f4f4;
+	}
 	.container {
 		height: 100%;
 		display: flex;

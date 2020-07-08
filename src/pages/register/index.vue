@@ -1,8 +1,8 @@
 <template>
 	<div class="page-register h100 bg-fff">
-		<div class="header c-fff text-c">
+		<!--<div class="header c-fff text-c">
 			<p>注册</p>
-		</div>
+		</div>-->
 		<div class="content">
 			<div class="register-form">
 				<div class="login-input text-input">
@@ -28,7 +28,7 @@
 					<!--<span class="forget fr" @click="forgetPass">忘记密码</span>-->
 				</div>
 				<div class="btn-grop c-fff text-c" >
-					<van-button type="primary" block @click="handleRegister" :loading="loginBtn.isLoading" :loading-text="loginBtn.loadingText">注册</van-button>
+					<van-button type="primary" color="#EE580F" size="small" block @click="handleRegister" :loading="loginBtn.isLoading" :loading-text="loginBtn.loadingText">注册</van-button>
 				</div>
 			</div>
 		</div>
@@ -78,6 +78,12 @@
 						delete copyForm.repwd
 						this.hasCommit = true
 						this.loginBtn.isLoading = true
+						setTimeout(()=>{
+							this.loginBtn.isLoading = false
+		                    this.$toast("注册成功！");
+		                    wx.navigateBack()
+						},2000)
+						/*
 						this.API.register(copyForm).then((data)=>{
 							if (data.ErrorCode == 100) {
 								this.loginBtn.isLoading = false
@@ -88,6 +94,7 @@
 		                    }
 
 						})
+						*/
 					}
 				}
 
@@ -145,6 +152,7 @@
 		-webkit-appearance: none;
 	}
 	.page-register {
+		font-size: 12px;
 		.header {
 			background: #EE580F;
 			height: 45px;
