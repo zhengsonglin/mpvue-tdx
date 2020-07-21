@@ -1,18 +1,18 @@
 <template>
-	<div class="page-index refundRecord bg-fff h100 over-auto">
+	<div class="page-index refundRecord bg-fff vh100 over-auto">
 		<div class="content">
 			<div class="container_title text-c">定制金返款记录<i class="iconfont icon-icon-dsj"></i></div>
 			<div class="refund-record">
-				<van-cell>
+				<van-cell class="van-cell">
 					<div class="cell-table tb-title">
 						<span>时间</span><span>订单号</span><span>记录</span><span>金额</span><span>状态</span>
 					</div>
 				</van-cell>
-			  	<van-cell v-for="(item, index) in list" :key="index">
-			  		<div class="cell-table f12 tb-data">
-			  			<span>{{format2(item.time)}}</span><span>{{item.order_sn }}</span>
-			  			<span>{{(item.IsDZOrHb == 1 ? '红包返款' : '定制金返款')}}</span><span>{{toDecimal2(item.money)}}</span>
-			  			<span>{{parseRefundState(item)}}</span>
+			  	<van-cell class="van-cell" v-for="(item, index) in list" :key="index">
+			  		<div class="cell-table f12 tb-data flex">
+			  			<span>{{item.time}}</span><span>{{item.order_sn }}</span>
+			  			<span>{{(item.type)}}</span><span>{{item.comment}}</span>
+			  			<span>已返款</span>
 			  		</div>
 			  	</van-cell>
 				
@@ -23,20 +23,17 @@
 </template>
 
 <script>
-	
+	import data from './data'
 	export default {
 		name: 'refundRecord',
 		data(){
 			return {
-				list: [],
+				list: [...data],
 			    loading: false,
 			    finished: false,
 			}
 		},
 		methods:{
-			onClickLeft(){
-				this.$router.back();
-			},
 	        //解析返款状态
 	        parseRefundState({FPingJiastatus, FNewStar}){
 	        	console.log(FPingJiastatus, FNewStar)
@@ -52,7 +49,6 @@
 <style scoped lang="scss">
 	.page-index {
 		.content {
-			margin-top: 46px;
 			padding: 0 10px;
 			.container_title {
 			    height: 46px;
@@ -74,8 +70,9 @@
 			}
 			.refund-record{
 				.van-cell{
-					padding: 10px 0;
+					font-size: 14px;
 					.cell-table{
+						padding: 10px 0;
 	    				&.tb-title{
 							font-weight: bold;
 						}
@@ -84,11 +81,15 @@
 							text-align: center;
 						}
 						span:nth-of-type(1){width: 19%;}
-						span:nth-of-type(2){width: 22%;padding: 0 2%;}
+						span:nth-of-type(2){width: 22%;padding: 0 2%;word-break: break-all;}
 						span:nth-of-type(3){width: 20%;}
 						span:nth-of-type(4){width: 16%;}
 						span:nth-of-type(5){width: 18%;}
 						&.tb-data{
+							font-size: 12px;
+							align-items: center;
+							color: #555;
+							border-bottom: 2rpx solid #eee;
 							span:nth-of-type(5){
 								font-size: 16px;
 								color: #fd3c3c;

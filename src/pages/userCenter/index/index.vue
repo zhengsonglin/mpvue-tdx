@@ -78,41 +78,41 @@
 
 			<div class="other-info over-hidden">
 				<van-grid clickable :column-num="3" :border="true">
-					<van-grid-item text="分析给好友" to="/recommendFriend">
-						<span class="mui-icon iconfont icon-fenxiang bg-pink" slot="icon"></span>
-					</van-grid-item>
-					<van-grid-item text="定制金返款" to="/refundRecord">
+					<van-grid-item  text="分析给好友" link-type="navigateTo" url="/pages/userCenter/recommendFriend/main">
+				  		<span class="mui-icon iconfont icon-fenxiang bg-pink" slot="icon"></span>
+				  	</van-grid-item>
+					<van-grid-item text="定制金返款" link-type="navigateTo" url="/pages/userCenter/refundRecord/main">
 						<span class="mui-icon iconfont icon-baozhengjin1 bg-green" slot="icon"></span>
 					</van-grid-item>
-					<van-grid-item text="预定任务" to="/reservationRecord">
+					<van-grid-item text="预定任务" link-type="navigateTo" url="/pages/userCenter/reservationRecord/main">
 						<span class="mui-icon iconfont icon-yuding bg-blue" slot="icon"></span>
 					</van-grid-item>
-					<van-grid-item text="实名认证" to="/realNameAuthentica">
+					<van-grid-item text="实名认证" link-type="navigateTo" url="/pages/userCenter/realNameAuthentica/main">
 						<span class="mui-icon iconfont icon-shimingrenzheng bg-red" slot="icon"></span>
 					</van-grid-item>
-					<van-grid-item text="银行卡绑定" to="/cardBind">
+					<van-grid-item text="银行卡绑定" link-type="navigateTo" url="/pages/userCenter/cardBind/main">
 						<span class="mui-icon iconfont icon-yinxingqia bg-orange" slot="icon"></span>
 					</van-grid-item>
-					<van-grid-item text="提现记录" to="/financeCenter">
+					<van-grid-item text="提现记录" link-type="navigateTo" url="/pages/userCenter/financeCenter/main">
 						<span class="mui-icon iconfont icon-tixianfc bg-blue" slot="icon"></span>
 					</van-grid-item>
-					<van-grid-item text="账户提现" to="/withDrawCash">
+					<van-grid-item text="账户提现" link-type="navigateTo" url="/pages/userCenter/withDrawCash/main">
 						<span class="mui-icon iconfont icon-tixian bg-blue" slot="icon"></span>
 					</van-grid-item>
-					<van-grid-item text="财务中心" to="/financeCenter">
+					<van-grid-item text="财务中心" link-type="navigateTo" url="/pages/userCenter/financeCenter/main">
 						<span class="mui-icon iconfont icon-caiwu bg-yellow" slot="icon"></span>
 					</van-grid-item>
-					<van-grid-item text="基本资料" to="/baseUserInfo">
+					<van-grid-item text="基本资料" link-type="navigateTo" url="/pages/userCenter/baseUserInfo/main">
 						<span class="mui-icon iconfont icon-iconfontgerenzhongxin bg-green" slot="icon"></span>
 					</van-grid-item>
-					<van-grid-item text="新手攻略" to="/newUserStrategy">
+					<van-grid-item text="新手攻略" link-type="navigateTo" url="/pages/userCenter/newUserStrategy/main">
 						<span class="mui-icon iconfont icon-bangzhu bg-purple" slot="icon"></span>
 					</van-grid-item>
-					<van-grid-item text="投诉与建议" to="/touSu">
+					<van-grid-item text="投诉与建议" link-type="navigateTo" url="/pages/userCenter/touSu/main">
 						<!--<span class="mui-icon van-icon van-icon-manager bg-pink" slot="icon"></span>-->
 						<van-icon name="manager" class="mui-icon bg-pink" style="line-height: 70rpx;" slot="icon"/>
 					</van-grid-item>
-					<van-grid-item text="修改密码" to="/changePwd">
+					<van-grid-item text="修改密码" link-type="navigateTo" url="/pages/userCenter/changePwd/main">
 						<span class="mui-icon iconfont icon-xiugaimima2 bg-black" slot="icon"></span>
 					</van-grid-item>
 				</van-grid>

@@ -42,6 +42,7 @@
 								<van-button type="danger" size="mini" class="buy-btn fr c-fff" @click.stop="toProductDetail(item)">马上抢</van-button>
 							</div>
 							<div class="progress">
+								<!--//mpvue中不支持在template中调用methods方法，可调用computed属性, 下面的percent方法都是无效的-->
 								<div class="bar_box inline-block h100" :style="{width:percent(item.order_count/item.task_count, 0)}"></div>
 								<div class="bar_txt w100 h100 c-fff">剩余{{item.task_count - item.order_count}}件/共{{item.task_count}}件{{percent(item.order_count/item.task_count, 0)}} </div>
 							</div>

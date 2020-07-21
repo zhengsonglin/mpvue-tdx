@@ -2,7 +2,8 @@
 import API from '@/api/getDatas.js'
 var moment = require('moment');
 moment.locale('zh-cn');	//设置为中文
-//import Toast from '../../../static/vant/toast/toast';
+import Toast from '../../../static/vant/toast/toast';
+import Notify from '../../../static/vant/notify/notify';
 
 export default {
 	install(Vue, options) {
@@ -21,8 +22,7 @@ export default {
 			}
 			return defaultValue;
 		});
-		/*Vue.prototype.$toast = (options)=>{
-			console.log(typeof options == "string")
+		Vue.prototype.$toast = (options)=>{
 			if(typeof options == "string"){
 				return Toast({
 					type:"text",
@@ -33,8 +33,9 @@ export default {
 			}else if(typeof options == "object"){
 				return Toast(options)
 			}
-		}*/
-		Vue.prototype.$toast = (options)=>{
+		}
+		//微信小程序toast
+		Vue.prototype.$wxToast = (options)=>{
 			if(typeof options == "string"){
 				wx.showToast({
 					title: options,
@@ -45,6 +46,15 @@ export default {
 				return wx.showToast(options)
 			}
 		}
+		//下面方法有问题，调用未生效
+		Vue.prototype.$notify = (options)=>{
+			if(typeof options == "string"){
+				Notify(options)	
+			}else if(typeof options == "object"){//options参数可参考vant-weapp文档
+				return Notify(options)
+			}
+		}
+		
 		Vue.prototype.moment = (formateTime, relativeTime)=>{
 			if(formateTime !=null){	//formateTime为'/Date(1586829908893)/'居然能解析
 				/*if(typeof formateTime == "string"){
@@ -101,5 +111,6 @@ export default {
 			}
 			return s;
 		}
+		
 	},
 }

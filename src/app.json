@@ -8,6 +8,16 @@
 		"pages/taskCenter/main",
 		"pages/userCenter/index/main",
 		"pages/userCenter/recommendFriend/main",
+		"pages/userCenter/refundRecord/main",
+		"pages/userCenter/reservationRecord/main",
+		"pages/userCenter/realNameAuthentica/main",
+		"pages/userCenter/cardBind/main",
+		"pages/userCenter/financeCenter/main",
+		"pages/userCenter/withDrawCash/main",
+		"pages/userCenter/baseUserInfo/main",
+		"pages/userCenter/newUserStrategy/main",
+		"pages/userCenter/touSu/main",
+		"pages/userCenter/changePwd/main",
 		"pages/index/main",
 		"pages/logs/main",
 		"pages/counter/main"
@@ -61,6 +71,18 @@
 	  	"van-grid": "/static/vant/grid/index",
   		"van-grid-item": "/static/vant/grid-item/index",
   		"van-tab": "/static/vant/tab/index",
-  		"van-tabs": "/static/vant/tabs/index"
+  		"van-tabs": "/static/vant/tabs/index",
+  		"van-radio": "/static/vant/radio/index",
+  		"van-radio-group": "/static/vant/radio-group/index",
+  		"van-uploader": "/static/vant/uploader/index",
+  		"van-field": "/static/vant/field/index",
+  		"van-overlay": "/static/vant/overlay/index",
+		"van-cell": "/static/vant/cell/index",
+  		"van-cell-group": "/static/vant/cell-group/index",
+  		"van-popup": "/static/vant/popup/index",
+  		"van-picker": "/static/vant/picker/index",
+  		"van-dialog": "/static/vant/dialog/index",
+  		"van-area": "/static/vant/area/index",
+  		"van-notify": "/static/vant/notify/index"
 	}
 }

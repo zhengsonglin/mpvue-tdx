@@ -1,11 +1,11 @@
 <template>
-	<div class="page-recommend bg-fff h100">
+	<div class="page-recommend bg-fff vh100">
 		<div class="content">
 			<div class="title">1、复制链接分享给好友或朋友圈</div>
 			<div class="link">http://www.taodaxiong.cn/Mobile/MobileRegister?code=30234671</div>
 			<div class="title">2、长按二维码保存到手机分享给好友或朋友圈</div>
 			<div class="rec_fri_img text-c">
-				<img src="img/recommend-qrcode1.png"/>
+				<img src="../../../assets/img/recommend-qrcode1.png"/>
 			</div>
 		</div>
 	</div>

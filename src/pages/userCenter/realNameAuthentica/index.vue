@@ -1,26 +1,28 @@
 <template>
-	<div class="page-index bg-fff h100 over-auto realNameAuthentica">
+	<div class="page-index bg-fff vh100 over-auto realNameAuthentica">
 		<div class="content" v-show="userRealInfo.real_name">
 
 			<van-cell-group class="cell-group">
-				<van-field v-model="form.reallyName" label="真实姓名" placeholder="真实姓名" :readonly="isDisabled"/>
+				<van-field :value="form.reallyName" label="真实姓名" placeholder="真实姓名" :readonly="isDisabled"/>
+				
+				<div class="cus-field">
+					<span>性别</span>
+					<van-radio-group value="1" bind:change="onChange">
+					  <van-radio name="1">单选框 1</van-radio>
+					  <van-radio name="2">单选框 2</van-radio>
+					</van-radio-group>
+				</div>
+				
 
-				<van-field name="radio" label="性别" >
-					<template #input>
-						<van-radio-group v-model="form.sex" direction="horizontal" :disabled="isDisabled">
-							<van-radio :name="0">男</van-radio>
-							<van-radio :name="1">女</van-radio>
-						</van-radio-group>
-					</template>
-				</van-field>
-				<van-field v-model="form.txt_age" type="digit" label="年龄" placeholder="年龄" :readonly="isDisabled"/>
-				<van-field v-model="form.wangwang " label="淘宝会员名" placeholder="淘宝会员名" :readonly="isDisabled" />
+				<van-field :value="form.txt_age" type="digit" label="年龄" placeholder="年龄" :readonly="isDisabled"/>
+				<van-field :value="form.wangwang " label="淘宝会员名" placeholder="淘宝会员名" :readonly="isDisabled" />
 				<p class="tb-tips">绑定平台做任务的旺旺号</p>
 
 				<van-field name="uploader" label="支付宝截图" v-if="!isDisabled">
-					<template #input>
+					<!--<template #input>
 						<van-uploader v-model="fileList" :max-count="1" />
-					</template>
+					</template>-->
+					<van-uploader :file-list="fileList"  /><!--bind:after-read="afterRead"-->
 				</van-field>
 			</van-cell-group>
 
@@ -32,7 +34,7 @@
 			</div>
 			
 			<div class="imgShow">
-				<img :src="form.picture" width="100%"/>
+				<img :src="form.picture" mode="widthFix" style="width:100%"/>
 			</div>
 		</div>
 	</div>
@@ -43,7 +45,14 @@
 		name: 'realNameAuthentica',
 		data() {
 			return {
-				userRealInfo: {},
+				userRealInfo: {
+					"is_submit": false,
+					"real_name": "郑松林 ",
+					"ww_name": "zold811691503",
+					"gender": "男",
+					"age": 27,
+					"prove_img": "https://taodaxiong-1259123353.cos.ap-shanghai.myqcloud.com/Documents/f7051976-5fce-4f40-a664-53b50631ad96.jpg"
+				},
 				form: {},
 				fileList: [],	//要上传的图片列表,(还未提交到后台)
 				isDisabled : true,
@@ -106,15 +115,15 @@
 			submit() {
 				let {reallyName, sex, txt_age, wangwang, picture} = this.form
 				if(reallyName ==""){
-					this.$toast("真实姓名不能为空")
+					this.$wxToast("真实姓名不能为空")
 				}else if(txt_age == ""){
-					this.$toast("请输入年龄")
+					this.$wxToast("请输入年龄")
 				}else if(!this.CheckAge(txt_age) ){
-					this.$toast("请输入正确的年龄")
+					this.$wxToast("请输入正确的年龄")
 				}else if(wangwang == ""){
-					this.$toast("请输入淘宝账号")
+					this.$wxToast("请输入淘宝账号")
 				}else if(this.fileList.length ==0){
-					this.$toast("请上传支付宝截图")
+					this.$wxToast("请上传支付宝截图")
 				}else{
 					
 					this.form.File1 = this.fileList.slice(0,1).file
@@ -122,29 +131,10 @@
 					this.API.updateUserAuthentica(this.form).then((data)=>{
 						console.log(data)
 						if (data.ErrorCode == 100) {
-							/*
-							this.API.getLoginUserInfo().then((data) => {
-								//格式如下 http://www.taodaxiong.cn/Content/Mobile/img/QRcode3.jpg
-								if (data.CheckCode == "A") {
-	                                //$("#r").attr("src", "/Content/Mobile/img/tt.jpg");
-	                                //$("#r").attr("src", "/Content/Mobile/img/QRcode2.jpg");
-	                                //$("#r").attr("src", "/Content/Mobile/img/QRcode.jpg");
-	                            } else if (data.CheckCode == "B") {
-	                                //$("#r").attr("src", "/Content/Mobile/img/qt.jpg");
-	                                //$("#r").attr("src", "/Content/Mobile/img/QRcode3.jpg");
-	                                //$("#r").attr("src", "/Content/Mobile/img/QRcode.jpg");
-	                            }
-								//设置审核客服微信二维码， 也可以使用本地对应的tt和qt二维码
-								if (data.CheckCode == "A") {
-									picture = "http://www.taodaxiong.cn/Content/Mobile/img/tt.jpg"		
-								}else if(data.CheckCode == "B"){
-									picture = "http://www.taodaxiong.cn/Content/Mobile/img/qt.jpg"
-								}
-							})
-							*/
+					
 							this.getLoginUserInfo()
 						}else if (data.ErrorCode == 101) {
-		                    this.$toast({
+		                    this.$wxToast({
 							  	//forbidClick: true,
 							  	type: "fail",
 							  	message: data.Content
@@ -161,6 +151,14 @@
 		},
 		created() {
 			//this.getLoginUserInfo()
+			this.form = {
+				fid:this.userRealInfo.FID,
+				reallyName: this.userRealInfo.real_name,
+				sex: this.userRealInfo.gender=="男"?0:1,
+				txt_age: this.userRealInfo.age,
+				wangwang: this.userRealInfo.ww_name,
+				picture: this.userRealInfo.prove_img
+			}
 		}
 	}
 </script>
@@ -168,9 +166,32 @@
 <style scoped lang="scss">
 	.page-index {
 		.content {
-			margin-top: 46px;/*no*/
 			padding: 0 10px;
 			.cell-group {
+				/deep/ .van-cell{
+					font-size: 13px;
+				}
+				.cus-field{
+					height: 20px;
+					line-height: 20px;
+					padding: 15px 10px 15px 18px;
+					border-bottom: 1px solid #f1f1f1;
+					/deep/ ._span{
+						width: 106px;
+						vertical-align: middle;
+						display: inline-block;
+					}
+					/deep/ ._van-radio-group{
+						vertical-align: middle;
+						display: inline-block;
+						._van-radio{
+							display: inline-block;
+							&:first-child{
+								margin-right: 40px;
+							}
+						}
+					}
+				}
 				.tb-tips {
 					color: #fd3c3c;
 					margin: 6px 90px 0;

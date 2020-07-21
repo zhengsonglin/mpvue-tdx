@@ -1,27 +1,33 @@
 <template>
-	<div class="page-index reservationRecord bg-fff h100 over-auto">
+	<div class="page-index reservationRecord bg-fff vh100 over-auto">
 		<div class="content">
 			<van-tabs @click="onClick" v-model="active">
 			  <van-tab title="已预订商品">
 			  	<div class="v-tab-content">
-			  		<table border="0" cellspacing="0" cellpadding="0" width="100%">
-			  			<tr><th>预定日期</th><th>商品详情</th><th>操作</th></tr>
-			  			<tr v-for="(item, n) in list1" :key="n">
-			  				<td>{{format2(item.FStarTime)}}</td><td>{{item.FName}}</td>
-			  				<td><van-button type="danger" size="small" @click="handleDelete(item)">删除</van-button></td>
-			  			</tr>
-			  		</table>
+			  		<div class="row-title flex bold text-c f14">
+			  			<span class="date">预定日期</span><span class="detail">商品详情</span><span class="hand">操作</span>
+			  		</div>
+			  		<div class="text-c f12">
+				  		<div class="row-data flex" v-for="n in 5">
+				  			<span class="date">2020-05-06 13:30:42</span><span class="detail">书包</span><span class="hand">
+				  				<van-button type="primary" size="mini">删除</van-button>
+				  			</span>
+				  		</div>
+			  		</div>
 			  	</div>
 			  </van-tab>
 			  <van-tab title="预订商品记录">
 			  	<div class="v-tab-content">
-			  		<table border="0" cellspacing="0" cellpadding="0" width="100%">
-			  			<tr><th>预定日期</th><th>商品详情</th><th>操作</th></tr>
-			  			<tr v-for="(item, n) in list2" :key="n">
-			  				<td>{{format2(item.FStarTime)}}</td><td>{{item.FName}}</td>
-			  				<td><van-button type="danger" size="small" @click="handleDelete(item)">删除</van-button></td>
-			  			</tr>
-			  		</table>
+			  		<div class="row-title flex bold text-c f14">
+			  			<span class="date">预定日期</span><span class="detail">商品详情</span><span class="hand">操作</span>
+			  		</div>
+			  		<div class="text-c f12">
+				  		<div class="row-data flex" v-for="n in 3">
+				  			<span class="date">2020-06-12 14:22:34</span><span class="detail">羽毛球拍</span><span class="hand">
+				  			<van-button type="primary" size="mini">删除</van-button>
+				  			</span>
+				  		</div>
+			  		</div>
 			  	</div>
 			  </van-tab>
 			</van-tabs>
@@ -41,9 +47,6 @@
 			}
 		},
 		methods:{
-			onClickLeft(){
-				this.$router.back();
-			},
 			//获取用户已预定商品
 			getUserReserve(){
 				this.API.getUserReserve().then((data)=>{
@@ -67,14 +70,14 @@
 		    deleteUserReserve(item){
 		    	this.API.deleteUserReserve({fid:item.FID }).then((data)=>{
 		    		if (data.ErrorCode == 100) {
-                        this.$toast('操作成功！');
+                        this.$wxToast('操作成功！');
                         if(this.active==0){
 					      	this.getUserReserve()
 					    }else{
 					      	this.getUserReserveRecord()
 					    }
                     } else if (data.ErrorCode == 101) {
-                        this.$toast(data.Content);
+                        this.$wxToast(data.Content);
                     } else {
                         var url = "/MobileUserCenter/ReservationRecord";
                         //location.href = "/Mobile/MobileLogin?rturl=" + url;
@@ -99,22 +102,23 @@
 <style scoped lang="scss">
 	.page-index {
 		.content {
-			margin-top: 46px;
 			padding: 0 10px;
 			.v-tab-content{
-				tr{
-					
+				.row-title, .row-data{
+					align-items: center;
 					height: 50px;
-					text-align: center;
-					th{
-						font-weight: bold;
-						font-size: 16px;
-						border-bottom: 1px solid #eee ;/*no*/
+					border-bottom: 2px solid #eee;
+					.date{
+						width: 30%;
+						flex-basis: 30%;
 					}
-					th:nth-of-type(1), th:nth-of-type(3){width: 30%;}
-					th:nth-of-type(2){width: 40%;}
-					td{
-						border-bottom: 1px solid #eee ;/*no*/
+					.detail{
+						width: 40%;
+						flex-basis: 40%;
+					}
+					.hand{
+						width: 30%;
+						flex-basis: 30%;
 					}
 				}
 			}
