@@ -6,13 +6,13 @@
 		<div class="row-wraper">
 			<van-row class="activity-type">
 				<van-col span="12">
-					<div to="sortProduct" class="row bg-fff text-c">
-						<img src="../../assets/img/nav-1.png" mode="heightFix" />
+					<div @click="sortProduct" class="row bg-fff text-c">
+						<img src="../../../assets/img/nav-1.png" mode="heightFix" />
 					</div>
 				</van-col>
 				<van-col span="12">
 					<div class="row bg-fff text-c" @click="changeSkillTaskList">
-						<img src="../../assets/img/nav-2.png" mode="heightFix" />
+						<img src="../../../assets/img/nav-2.png" mode="heightFix" />
 					</div>
 				</van-col>
 			</van-row>
@@ -66,7 +66,7 @@
 	import customeHeader from '@/components/custom-header'
 	import mySwiper from '@/components/swiper'
 	import advertisingVertical from '@/components/advertising/advertising-vertical'
-	import store from '../../store'
+	import store from '@/store'
 	import data from './data'
 	import {getRandomFromArray} from '@/assets/js/util'
 	
@@ -95,7 +95,12 @@
 			
 		},
 		methods: {
-
+			sortProduct(){
+				wx.navigateTo({ url: "/pages/home/sortProduct/main"})
+			},
+			changeSkillTaskList(){
+				wx.navigateTo({ url: "/pages/home/skillProduct/main"})
+			}
 		},
 		onPullDownRefresh(){
 		    console.log("我正在下拉刷新") //用于测试下拉刷新

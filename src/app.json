@@ -1,9 +1,11 @@
 {
 	"pages": [
-		"pages/home/main",
-		"pages/login/main",
-		"pages/register/main",
-		"pages/forgetPwd/main",
+		"pages/home/index/main",
+		"pages/home/skillProduct/main",
+		"pages/home/sortProduct/main",
+		"pages/login/index/main",
+		"pages/login/register/main",
+		"pages/login/forgetPwd/main",
 		"pages/question/main",
 		"pages/taskCenter/main",
 		"pages/userCenter/index/main",
@@ -20,10 +22,7 @@
 		"pages/userCenter/changePwd/main",
 		"pages/userCenter/feedBack/main",
 		"pages/userCenter/addFeedBack/main",
-		"pages/userCenter/updateDescription/main",
-		"pages/index/main",
-		"pages/logs/main",
-		"pages/counter/main"
+		"pages/userCenter/updateDescription/main"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
@@ -39,7 +38,7 @@
 
     "list": [{
       "text": "首页",
-      "pagePath": "pages/home/main",
+      "pagePath": "pages/home/index/main",
       "iconPath": "static/tabs/home.png",
       "selectedIconPath": "static/tabs/home-active.png"
     }, {
@@ -88,5 +87,6 @@
   		"van-area": "/static/vant/area/index",
   		"van-notify": "/static/vant/notify/index",
   		"van-empty": "/static/vant/empty/index"
+  		
 	}
 }

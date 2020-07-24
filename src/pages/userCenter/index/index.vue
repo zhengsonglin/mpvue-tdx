@@ -190,7 +190,7 @@
 				//console.log(document.cookie)
 				//this.$router.push("login")
 				//wx.navigateTo({ url: "/pages/login/main"})
-				wx.reLaunch({ url: "/pages/login/main"})
+				wx.reLaunch({ url: "/pages/login/index/main"})
 			}
 		},
 

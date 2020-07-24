@@ -5,7 +5,7 @@
 		</div>-->
 		<div class="content">
 			<div class="login-pic text-c">
-				<img src="../../assets/img/logo.png" />
+				<img src="../../../assets/img/logo.png" />
 			</div>
 			<div class="login-form">
 				<div class="login-input text-input">
