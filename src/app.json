@@ -18,6 +18,9 @@
 		"pages/userCenter/newUserStrategy/main",
 		"pages/userCenter/touSu/main",
 		"pages/userCenter/changePwd/main",
+		"pages/userCenter/feedBack/main",
+		"pages/userCenter/addFeedBack/main",
+		"pages/userCenter/updateDescription/main",
 		"pages/index/main",
 		"pages/logs/main",
 		"pages/counter/main"
@@ -83,6 +86,7 @@
   		"van-picker": "/static/vant/picker/index",
   		"van-dialog": "/static/vant/dialog/index",
   		"van-area": "/static/vant/area/index",
-  		"van-notify": "/static/vant/notify/index"
+  		"van-notify": "/static/vant/notify/index",
+  		"van-empty": "/static/vant/empty/index"
 	}
 }

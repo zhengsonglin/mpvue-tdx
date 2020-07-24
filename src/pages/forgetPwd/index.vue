@@ -1,5 +1,5 @@
 <template>
-	<div class="page-register h100 bg-fff">
+	<div class="page-register vh100 bg-fff">
 		<!--<div class="header c-fff text-c">
 			<p>找回密码</p>
 		</div>-->
@@ -165,9 +165,12 @@
 					}
 					.reg-get-code{
 						position: absolute;
-						right: 6px;
+						right: 4px;
 						top: 10px;
 						color: #EE580F;
+						/deep/ .van-button{
+							padding: 0 5px;
+						}
 					}
 				}
 				.btn-grop{

@@ -121,10 +121,10 @@
 			<div class="suggestion-bk bg-fff text-c over-hidden">
 				<van-row>
 					<van-col span="12">
-						<p class="item line" :to="'feedBack'">意见反馈</p>
+						<p class="item line" @click="toFeedBack">意见反馈</p>
 					</van-col>
 					<van-col span="12">
-						<p class="item" :to="'updateDescription'">更新说明</p>
+						<p class="item" @click="toUpdateDescription">更新说明</p>
 					</van-col>
 
 				</van-row>
@@ -178,6 +178,12 @@
 		},
 
 		methods: {
+			toFeedBack(){
+				wx.navigateTo({ url: "/pages/userCenter/feedBack/main"})
+			},
+			toUpdateDescription(){
+				wx.navigateTo({ url: "/pages/userCenter/updateDescription/main"})
+			},
 			logout() {
 				//this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX")   
 				//console.log(this.$cookies.get("UserInfo"))

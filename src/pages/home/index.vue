@@ -27,11 +27,11 @@
 		</advertising-vertical>
 
 		<div class="content">
-			<van-cell v-for="(item, index) in list" :key="index" class="product-item bg-fff block">
+			<div v-for="(item, index) in list" :key="index" class="product-item bg-fff block">
 				<van-row class="bg-fff product-item-row" @click.stop="toProductDetail(item)">
 					<van-col span="8">
 						<div class="imgShow">
-							<van-image width="100" height="100" lazy-load :src="item.img" class="product-pic w100 h100" />
+							<van-image width="100" height="100" mode="widthFix" lazy-load :src="item.img" class="product-pic w100 h100" />
 						</div>
 					</van-col>
 					<van-col span="16">
@@ -42,14 +42,17 @@
 								<van-button type="danger" size="mini" class="buy-btn fr c-fff" @click.stop="toProductDetail(item)">马上抢</van-button>
 							</div>
 							<div class="progress">
-								<!--//mpvue中不支持在template中调用methods方法，可调用computed属性, 下面的percent方法都是无效的-->
+								<!--//mpvue中不支持在template中调用methods方法，可调用computed属性, 下面的percent方法都是无效的
 								<div class="bar_box inline-block h100" :style="{width:percent(item.order_count/item.task_count, 0)}"></div>
 								<div class="bar_txt w100 h100 c-fff">剩余{{item.task_count - item.order_count}}件/共{{item.task_count}}件{{percent(item.order_count/item.task_count, 0)}} </div>
+								-->
+								<div class="bar_box inline-block h100" :style="{width:item.widthPercent}"></div>
+								<div class="bar_txt w100 h100 c-fff">剩余{{item.task_count - item.order_count}}件/共{{item.task_count}}件{{widthPercent}} </div>
 							</div>
 						</div>
 					</van-col>
 				</van-row>
-			</van-cell>
+			</div>
 			<div class="load-more text-c">
 				<p v-show="isLoadingMore"><van-loading size="18px" type="spinner">加载中...</van-loading></p>
 				<p v-show="nodata" class="nodata">没有数据了</p>
@@ -66,6 +69,8 @@
 	import store from '../../store'
 	import data from './data'
 	import {getRandomFromArray} from '@/assets/js/util'
+	
+	
 	export default {
 		name: "home",
 		components: {
@@ -76,10 +81,18 @@
 		data() {
 			return {
 				advertisingList: store.state.advertisingList,
-				list: [...data],
+				list: [],	//...data
 				isLoadingMore: false,
 				nodata:false
 			}
+		},
+		created(){
+			data.forEach((item, index)=>{
+				data[index].widthPercent = this.percent(item.order_count/item.task_count, 0)
+			})
+			console.log(data)
+			this.list = [...data]
+			
 		},
 		methods: {
 
@@ -124,12 +137,12 @@
 	}
 
 	.content {
-	
 		.product-item {
 			min-height: 120px;
 			padding: 0;
 			border-radius: 6px;
 			margin: 0 10px 10px;
+			
 			.product-item-row {
 				
 				.imgShow {
