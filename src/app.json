@@ -3,6 +3,7 @@
 		"pages/home/index/main",
 		"pages/home/skillProduct/main",
 		"pages/home/sortProduct/main",
+		"pages/home/productDetail/main",
 		"pages/login/index/main",
 		"pages/login/register/main",
 		"pages/login/forgetPwd/main",

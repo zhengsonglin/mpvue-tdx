@@ -1,7 +1,11 @@
 <template>
 	<div class="header-wrap" :style="{height:customBarHeight}">
 		<div class="header c-fff text-c" :style="{height:customBarHeight, paddingTop: statusBarHeight, lineHeight: lineHeight, background: bgImage}">
-			<p>{{title}}</p>
+			<div class="action" @click="BackPage" v-if="isBack">
+				<van-icon name="arrow-left" />
+				<slot name="backText"></slot>
+			</div>
+			<div class="content">{{title}}</div>
 		</div>
 	</div>
 </template>
@@ -11,6 +15,7 @@
 	export default {
 		name: 'customeHeader',
 		props:{
+			isBack: false,
 			title: {
 				type: String,
 				default: "淘大熊",
@@ -28,7 +33,11 @@
 			}
 		},
 		methods: {
-			
+			BackPage(){
+				wx.navigateBack({
+			        delta: 1
+			    });
+			}
 		}
 	}	
 </script>

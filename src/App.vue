@@ -35,6 +35,7 @@
 <style>
 	@import 'assets/css/common.css';
 	@import 'assets/css/iconfont/icon-font.css';
+	@import '../static/vant/common/index.wxss';
 	html,
 	body {
 		background: #f4f4f4;

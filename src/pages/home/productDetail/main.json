@@ -1,0 +1,8 @@
+{
+	"navigationBarBackgroundColor": "#0a0",
+	"navigationBarTitleText": "商品详情",
+	"navigationBarTextStyle": "white",
+	"navigationStyle": "custom",
+	"enablePullDownRefresh": false,
+	"backgroundTextStyle": "dark"
+}

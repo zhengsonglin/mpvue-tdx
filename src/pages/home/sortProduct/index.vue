@@ -1,5 +1,5 @@
 <template>
-	<div class="page-index bg-fff w100 h100 over-auto sortProduct absolute">
+	<div class="page-index bg-fff w100 vh100 over-auto sortProduct absolute">
 		<div class="content flex h100">
 			<div class="left-item h100 over-auto">
 				<div :class="['nav-item', {active: category== item.id}]" v-for="(item,index) in categoryList" :key="index" @click.stop="changeCategory(item)">
@@ -13,25 +13,25 @@
 							 @click.stop="changeQueryStatus(statusItem)">{{statusItem.name}}</div>
 					</div>
 					<div class="bottom-item over-auto">
-						<van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-							<van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :immediate-check="false">
+						
 								<van-cell v-for="(item, index) in productList" :key="index" class="product-item">
 									<div class="flex bg-fff">
 										<div class="left-img">
-											<img :src="item.img" width="100%" height="100%" lazy-load/>
-											<!--<van-image mode="widthFix" lazy-load :src="item.img" class="product-pic w100 h100" />-->
+											<!--<img :src="item.img" class="product-pic w100 h100" lazy-load/>-->
+											<van-image mode="widthFix" width="100%" height="100%" lazy-load :src="item.img" class="product-pic " />
 										</div>
-										<div class="right-content flex-1">
+										<div class="right-content flex-1 text-l">
 											<div class="row-1 van-ellipsis">{{item.title}}</div>
 											<div class="row-2">
-												<span class="storeTag" v-show="item.FGoodsObjectID == 25 && item.SlideShow == 1">需晒图</span>
+												<span class="storeTag" v-show="index%2==0">需晒图</span>
 											</div>
 											<div class="row-3 over-hidden">
 												<div class="left fl">
 													<span class="title">垫付:</span> <p class="red inline-block">￥<span class="price bold">{{item.price}}</span></p></span>
 												</div>
-												<div class="right fr" v-if="status ==null">
-													<span class="btn inline-block c-fff  text-c" @click="toProductDetail(item)">马上抢</span>
+												<div class="right fr">
+													<!--<span class="btn inline-block c-fff  text-c" @click="toProductDetail(item)">马上抢</span>-->
+													<van-button type="danger" size="mini" class="buy-btn fr c-fff" @click.stop="toProductDetail(item)">马上抢</van-button>
 												</div>
 											</div>
 											<div class="row-4 relative">
@@ -44,8 +44,7 @@
 										</div>
 									</div>
 								</van-cell>
-							</van-list>	
-						</van-pull-refresh>
+							
 					</div>
 				</div>
 			</div>
@@ -91,13 +90,22 @@
 			}
 		},
 		methods:{
-			onClickLeft() {
-				this.$router.back();
-			},
 			//改变查询商品类别
 			changeCategory(item){
 				this.category = item.id;
-				this.onRefresh()
+				this.productList = []
+				let productList = []
+				data.forEach((sItem, index)=>{
+					if(item.id==0){
+						productList.push(...sItem.products)
+					}else{
+						if(this.category == sItem.id){
+							productList.push(...sItem.products)
+						}
+					}
+				})
+				
+				this.productList = [...productList]
 			},
 			//改变查询商品状态
 			changeQueryStatus(item){
@@ -110,45 +118,20 @@
 					this.categoryList = data
 				})
 			},
-			onLoad(){
-				if(this.refreshing) {
-					this.pageNo = 1;
-					this.productList = [];
-					this.refreshing = false;
-				}
-				this.getProductList()
-			},
+			
 			onRefresh() {
-				//下拉刷新调用onRefresh方法时内部已经处理refreshing = true, 但其他方法调用onRefresh时，并没有设置refreshing为true,所以下面再设置一次(兼容默认刷新)
-				this.refreshing = true;
-				// 清空列表数据
-				this.finished = false;
-
-				// 重新加载数据
-				// 将 loading 设置为 true，表示处于加载状态
-				this.loading = true;
-				this.onLoad();
-			},
-			//查询单个类别下商品列表
-			getProductList(){
-				this.API.getProductList(this.getParams, {showLoading: false}).then(({data, error})=>{
-					//this.productList = data
-					data.forEach(({task_count, order_count}, index)=>{
-						//item.task_count - item.order_count}
-						data[index].widthPercent = this.percent((task_count - order_count)/task_count, 3)
-						data[index].textPercent = this.percent( order_count/task_count, 0)
-					})
-					this.productList.push(...data);
-					if(data.length < this.pageSize) {
-						this.finished = true;
-					} else {
-						this.loading = false;
-						this.pageNo++
-					}
+				this.productList = []
+				let productList = []
+				data.forEach((item, index)=>{
+					productList.push(...item.products)
 				})
+				
+				this.productList = [...productList]
 			},
+			
 			toProductDetail(item){
-				this.$router.push({path:"/productDetail", query:{shopId:item.FID, mark:"M"}})
+				//this.$router.push({path:"/productDetail", query:{shopId:item.FID, mark:"M"}})
+				wx.navigateTo({ url: "/pages/home/sortProduct/main?productId="+item.pa_id})
 			}
 		},
 		created(){
@@ -210,8 +193,7 @@
 						/deep/ {
 							.product-item{
 								flex-direction: row;
-								margin-bottom: 10px;
-								padding: 5px 6px;
+								
 								.left-img{
 									width: 94px;
 									flex-basis: 94px;
@@ -219,15 +201,18 @@
 									border: 1px solid #eee; /*no*/
 								} 
 								.right-content{
+									width: 0;
 									box-sizing: border-box;
-									padding-left: 16px;
+									padding-left: 12px;
 									.row-1{
 										font-size: 16px;
-										line-height: 30px;
+										line-height: 20px;
 									}
 									.row-2{
 										height: 20px;
+										line-height: 1;
 										.storeTag{
+											font-size: 12px;
 											color: #ed7739;
 	   	 									background: #fde9e0;
 	   	 									padding: 2px 3px;

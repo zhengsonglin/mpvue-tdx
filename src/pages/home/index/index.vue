@@ -100,6 +100,9 @@
 			},
 			changeSkillTaskList(){
 				wx.navigateTo({ url: "/pages/home/skillProduct/main"})
+			},
+			toProductDetail(item){
+				wx.navigateTo({ url: "/pages/home/productDetail/main?item="+JSON.stringify(item)})
 			}
 		},
 		onPullDownRefresh(){
