@@ -7,8 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		statusBarHeight: null,	//系统状态栏高度
-		capsule: null,	//胶囊按钮属性
+		capsule: {},	//胶囊按钮属性
 		customBarHeight: null,	//自定义导航栏高度
+		winWidth: wx.getSystemInfoSync().windowWidth,	//小程序窗口宽度
+		winHeight: wx.getSystemInfoSync().windowHeight,	//小程序窗口高度
 		userLoginInfo: {
 			"avatar":"",
 			"is_ab":"",
@@ -86,6 +88,7 @@ export default new Vuex.Store({
 			        commit('setCustomBarHeight', customBarHeight)
 			    }
 			})
+			
 		}
 	},
 	modules: {}

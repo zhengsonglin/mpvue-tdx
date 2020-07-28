@@ -131,7 +131,7 @@
 			
 			toProductDetail(item){
 				//this.$router.push({path:"/productDetail", query:{shopId:item.FID, mark:"M"}})
-				wx.navigateTo({ url: "/pages/home/sortProduct/main?productId="+item.pa_id})
+				wx.navigateTo({ url: "/pages/home/productDetail/main?item="+JSON.stringify(item)})
 			}
 		},
 		created(){

@@ -87,7 +87,7 @@
   		"van-dialog": "/static/vant/dialog/index",
   		"van-area": "/static/vant/area/index",
   		"van-notify": "/static/vant/notify/index",
-  		"van-empty": "/static/vant/empty/index"
-  		
+  		"van-empty": "/static/vant/empty/index",
+  		"van-search": "/static/vant/search/index"
 	}
 }

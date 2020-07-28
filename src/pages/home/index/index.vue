@@ -1,6 +1,10 @@
 <template>
 	<div class="home">
-		<custome-header title="首页"></custome-header>
+		<!--<custome-header title="首页"></custome-header>-->
+		<custome-header>
+			<view slot="content">首页</view>
+		</custome-header>
+		
 		<my-swiper></my-swiper>
 
 		<div class="row-wraper">
@@ -134,7 +138,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped="scoped">
 	.row-wraper {
 		margin: 10px;
 		.activity-type {

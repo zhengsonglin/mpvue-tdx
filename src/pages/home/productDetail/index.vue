@@ -1,9 +1,16 @@
 <template>
 	<!--productDetail-->
 	<div class="page-index productDetail bg-fff vh100 over-auto">
-		<custome-header title="productInfo.title" :isBack="true"></custome-header>
+		<div class='cu-custom c-fff'>
+			<div class="cu-bar fixed bg-shadeTop flex" :style="{height:customBarHeight,paddingTop:statusBarHeight}">
+				<navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+					<van-icon name="arrow-left" class="cus-icon" size="20px"/> 返回
+				</navigator>
+				<div class='content van-ellipsis text-c' :style='{top:statusBarHeight}'>{{productInfo.title}}</div>
+			</div>
+		</div>
 		<img :src="productInfo.img" mode="widthFix">
-		<div class="content">
+		<div class="page-content">
 			<div class="com-detail detail-title over-hidden">
 				<div class="cell-row row-1">
 					<span class="platType fl c-fff text-c">淘宝</span><span class="productName fr">{{productInfo.FGoodsName}}</span>
@@ -19,11 +26,11 @@
 			<div class="com-detail detail-time">
 				<p>
 					<span class="iconfont icon-clock"></span>活动时间开始
-					<span class="time-over bold red">{{productInfo.task_start}}</span>
+					<span class="time-over bold red">2020-04-06 12:21</span>
 				</p>
 				<p>
 					<span class="iconfont icon-clock"></span>活动时间结束
-					<span class="time-over bold red">{{productInfo.task_end}}</span>
+					<span class="time-over bold red">2020-04-06 12:28</span>
 				</p>
 			</div>
 
@@ -36,7 +43,7 @@
 
 			<!-- 保险金 -->
 			<div class="com-detail detail-insu">
-				<span class="iconfont icon-yinxingqia"></span>商家已存入保证金{{productInfo.FALLprice}}元平台担保返款
+				<span class="iconfont icon-yinxingqia"></span>商家已存入保证金{{productInfo.price}}元平台担保返款
 			</div>
 
 			<!-- 任务流程 -->
@@ -87,7 +94,7 @@
 					</van-col>
 				</van-col>
 				<van-col span="12">
-					<van-button size="large" block :color="btnInfo.color" :disabled="btnInfo.disabled" class="f18" @click="submit">{{btnInfo.text}}</van-button>
+					<van-button  block :color="btnInfo.color" :disabled="btnInfo.disabled" class="f18" @click="submit">{{btnInfo.text}}</van-button>
 				</van-col>
 
 			</van-row>
@@ -121,6 +128,7 @@
 <script>
 	import customeHeader from '@/components/custom-header'
 	import mySwiper from '@/components/swiper'
+	import store from '@/store'
 	export default {
 		name: "productDetail",
 		components: {
@@ -139,6 +147,8 @@
 		},
 		data() {
 			return {
+				customBarHeight: store.state.customBarHeight +"px",
+				statusBarHeight: store.state.statusBarHeight +"px",
 				showMenuNav: false,
 				productInfo: {},
 				showOverlay: false,
@@ -156,18 +166,18 @@
 		},
 		methods: {
 			handleHelp() {
-				this.$toast('如有疑问，请及时联系淘大熊客服（晴天或者熊大）！');
+				this.$wxToast('如有疑问，请及时联系淘大熊客服（晴天或者熊大）！');
 			},
 			getProductDetail() {
 
 				
 			},
 			submit() {
-			
+				this.showOverlay = true
 			},
 			//领取任务
 			handleBuy() {
-				
+				this.showOverlay = false
 			},
 			
 		},
@@ -183,9 +193,46 @@
 
 <style lang="scss" scoped>
 	.page-index {
-		.content {
+		.cu-custom{
+			box-sizing: border-box;
+			position: relative;
+			.cu-bar {
+				width: 100%;
+				min-height: 0px;
+				padding-right: 110px;
+				z-index: 9999;
+				align-items: center;
+				box-sizing: border-box;
+				&.bg-shadeTop {
+					background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.01));
+				}
+				.action{
+					font-size: 16px;
+					padding-left: 10px;
+					.cus-icon{
+						display: inline-block;
+						vertical-align: middle;
+					}
+				}
+				.content{
+					position: absolute;
+					width: calc(100% - 220px);
+					left: 0;
+					right: 0;
+					bottom: 0;
+					top: 0;
+					margin: auto;
+					height: 30px;
+					font-size: 16px;
+					line-height: 30px;
+					cursor: none;
+					pointer-events: none;
+					box-sizing: border-box;
+				}
+			}
+		}
+		.page-content {
 			padding-bottom: 70px;
-			/*no*/
 			.red {
 				color: #ff0045;
 			}

@@ -2,7 +2,6 @@
 	"navigationBarBackgroundColor": "#0a0",
 	"navigationBarTitleText": "熊抢购",
 	"navigationBarTextStyle": "white",
-	"navigationStyle": "custom",
-	"enablePullDownRefresh": true,
+	"enablePullDownRefresh": false,
 	"backgroundTextStyle": "dark"
 }
