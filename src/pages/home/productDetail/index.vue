@@ -253,8 +253,8 @@
 						&.row-1 {
 							.platType {
 								width: 48px;
-								height: 32px;
-								line-height: 32px;
+								height: 28px;
+								line-height: 28px;
 								background-color: orange;
 							}
 							.productName {

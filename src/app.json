@@ -1,14 +1,14 @@
 {
 	"pages": [
+		"pages/login/index/main",
+		"pages/login/register/main",
+		"pages/login/forgetPwd/main",
 		"pages/home/index/main",
 		"pages/home/skillProduct/main",
 		"pages/home/sortProduct/main",
 		"pages/home/productDetail/main",
-		"pages/login/index/main",
-		"pages/login/register/main",
-		"pages/login/forgetPwd/main",
 		"pages/question/main",
-		"pages/taskCenter/main",
+		"pages/taskCenter/index/main",
 		"pages/userCenter/index/main",
 		"pages/userCenter/recommendFriend/main",
 		"pages/userCenter/refundRecord/main",
@@ -49,7 +49,7 @@
       "selectedIconPath": "static/tabs/question-active.png"
     }, {
       "text": "订单",
-      "pagePath": "pages/taskCenter/main",
+      "pagePath": "pages/taskCenter/index/main",
       "iconPath": "static/tabs/order.png",
       "selectedIconPath": "static/tabs/order-active.png"
     }, {
@@ -88,6 +88,7 @@
   		"van-area": "/static/vant/area/index",
   		"van-notify": "/static/vant/notify/index",
   		"van-empty": "/static/vant/empty/index",
-  		"van-search": "/static/vant/search/index"
+  		"van-search": "/static/vant/search/index",
+  		"van-sticky": "/static/vant/sticky/index"
 	}
 }

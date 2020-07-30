@@ -60,8 +60,8 @@
 							this.$wxToast.fail(data.Content)
 						}
 					})*/
-					wx.reLaunch({ url: "/pages/home/main"})
-				
+					//wx.reLaunch({ url: "/pages/home/index/main"})
+					wx.reLaunch({ url: "/pages/home/index/main"})
 				}
 			},
 			loginSuccess(data) {
@@ -85,12 +85,12 @@
 				console.log(data)
 			},
 			toRegister() {
-				//this.$router.push({ path: "/pages/register/main"})
-				wx.navigateTo({ url: "/pages/register/main"})
+				//this.$router.push({ path: "/pages/login/register/main"})
+				wx.navigateTo({ url: "/pages/login/register/main"})
 			},
 			forgetPass() {
 				//this.$router.push("forgetPwd")
-				wx.navigateTo({ url: "/pages/forgetPwd/main"})
+				wx.navigateTo({ url: "/pages/login/forgetPwd/main"})
 			}
 		}
 	}
