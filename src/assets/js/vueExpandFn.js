@@ -2,8 +2,8 @@
 import API from '@/api/getDatas.js'
 var moment = require('moment');
 moment.locale('zh-cn');	//设置为中文
-import Toast from '../../../static/vant/toast/toast';
-import Notify from '../../../static/vant/notify/notify';
+import Toast from '@/../static/vant/toast/toast';
+import Notify from '@/../static/vant/notify/notify';
 
 export default {
 	install(Vue, options) {

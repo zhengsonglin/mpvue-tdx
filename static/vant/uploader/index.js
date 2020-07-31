@@ -150,7 +150,7 @@ VantComponent({
       if (typeof this.data.afterRead === 'function') {
         this.data.afterRead(file, this.getDetail());
       }
-      this.$emit('after-read', Object.assign({ file }, this.getDetail()));
+      this.$emit('afterread', Object.assign({ file }, this.getDetail()));
     },
     deleteItem(event) {
       const { index } = event.currentTarget.dataset;

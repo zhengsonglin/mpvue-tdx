@@ -1,5 +1,5 @@
 <template>
-	<div class="page-login h100 bg-fff">
+	<div class="page-login vh100 bg-fff">
 		<!--<div class="header c-fff text-c">
 			<p>登录</p>
 		</div>-->

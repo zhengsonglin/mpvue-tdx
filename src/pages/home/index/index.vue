@@ -5,7 +5,7 @@
 			<view slot="content">首页</view>
 		</custome-header>
 		
-		<my-swiper></my-swiper>
+		<my-swiper height="400rpx"></my-swiper>
 
 		<div class="row-wraper">
 			<van-row class="activity-type">
@@ -35,7 +35,7 @@
 				<van-row class="bg-fff product-item-row" @click.stop="toProductDetail(item)">
 					<van-col span="8">
 						<div class="imgShow">
-							<van-image width="100" height="100" mode="widthFix" lazy-load :src="item.img" class="product-pic w100 h100" />
+							<van-image width="220rpx" height="220rpx" mode="widthFix" lazy-load :src="item.img" class="product-pic w100" />
 						</div>
 					</van-col>
 					<van-col span="16">

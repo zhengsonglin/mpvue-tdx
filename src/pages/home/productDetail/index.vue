@@ -182,7 +182,7 @@
 			
 		},
 		mounted() { 
-			console.log(this.$root.$mp.query.item) //{'param' : param}
+			//console.log(this.$root.$mp.query.item) //{'param' : param}
 
 			//this.tId = this.$route.query.tId
 			//this.getProductDetail();

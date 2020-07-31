@@ -9,6 +9,8 @@
 		"pages/home/productDetail/main",
 		"pages/question/main",
 		"pages/taskCenter/index/main",
+		"pages/taskCenter/refundDetail/main",
+		"pages/taskCenter/uploadScreenShot/main",
 		"pages/userCenter/index/main",
 		"pages/userCenter/recommendFriend/main",
 		"pages/userCenter/refundRecord/main",

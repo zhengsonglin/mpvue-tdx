@@ -3,7 +3,7 @@
 		:style="{'height':height}">
 	      <block v-for="(item, index) in datas" :key="index" >
 		        <swiper-item>
-		          	<image :src="item" mode="widthFix"></image>
+		          	<image :src="item" mode="widthFix" class="w100"></image>
 		        </swiper-item>
 		    </block>
     </swiper>
@@ -19,7 +19,7 @@
 			},
 			height:{
 				type: String|Number,
-				default:"160px"
+				default:"400rpx"
 			},
 			datas:{
 				type: Array,
