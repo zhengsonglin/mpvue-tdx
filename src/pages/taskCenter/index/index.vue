@@ -4,16 +4,18 @@
 			<van-tabs active="a" animated>
 			  <van-tab :title="item.name" name="a" v-for="(item, index) in category" :key="state">
 			  	<div class="product bg-fff" v-for="(sItem, sIndex) in item.product" :key="id">
-			  		<div class="o-top">
-						<div class="tag-wrap flex c-fff">
-							<div class="task-shop"><span class="cu-tag c-fff">淘宝</span>{{sItem.shop_name}}</div>
-							<div class="task-state">任务状态:<span class="span-df">{{sItem.stateText}}</span></div>
-						</div>
-						<div class="o-top-l fl">
+			  		
+					<div class="top-wrap flex c-fff">
+						<div class="task-shop"><span class="cu-tag c-fff">淘宝</span>{{sItem.shop_name}}</div>
+						<div class="task-state">任务状态:<span class="span-df">{{sItem.stateText}}</span></div>
+					</div>	
+					
+					<div class="center-wrap flex">
+						<div class="o-top-l">
 							<!--<img :src="sItem.url" mode="widthFix" class="w100" lazy-load/>-->
-							<van-image width="220rpx" height="220rpx" mode="widthFix" lazy-load :src="sItem.url" class="w100" />
+							<van-image width="100%" height="100%" mode="widthFix" lazy-load :src="sItem.url" class="w100" />
 						</div>
-						<div class="o-top-r fl padding-xs span-sm">
+						<div class="o-top-r flex-1 padding-xs span-sm">
 							<div class="span-df van-ellipsis"><span>{{sItem.title}}</span></div>
 							<div class="margin-top-xs ">订单号:<span class="margin-left-xs">{{sItem.orderNo}}</span></div>
 							<div class="margin-top-xs ">总价:<span class="margin-left-xs span-orange">{{sItem.price}}</span></div>
@@ -21,6 +23,7 @@
 							<div class="margin-top-xs">买家旺旺:<span class="margin-left-xs span-blue">zold845517008</span></div>
 						</div>
 					</div>
+					
 					<div class="o-bottom">
 						<div>
 							<van-button color="#e54d42" size="mini" class="margin-left-sm" @click.stop="showGoodsInfo(sItem)">商品信息</van-button>
@@ -109,40 +112,41 @@
 	
 	.product{
 		margin: 10px;
-		.o-top{
-		    overflow: hidden;
-		    .tag-wrap{
-			    padding: 8rpx 12rpx;
-			    background: #cdc0bf;
-			    font-size: 26rpx;
-			    justify-content: space-between;
-			    .cu-tag{
-			    	font-size: 12px;
-					vertical-align: middle;
-					position: relative;
-					display: inline-flex;
-					align-items: center;
-					justify-content: center;
-					box-sizing: border-box;
-					padding: 0px 8px;
-					height: 24px;
-					font-family: Helvetica Neue, Helvetica, sans-serif;
-					white-space: nowrap;
-					margin-right: 10px;
-					background-color: #f37b1d;
-			    }
-			    .span-df{
-			    	margin-left: 10px;
-			    	font-size: 14px;
-			    }
-			}
+		
+	    .top-wrap{
+		    padding: 8rpx 12rpx;
+		    background: #cdc0bf;
+		    font-size: 26rpx;
+		    justify-content: space-between;
+		    .cu-tag{
+		    	font-size: 12px;
+				vertical-align: middle;
+				position: relative;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				box-sizing: border-box;
+				padding: 0px 8px;
+				height: 24px;
+				font-family: Helvetica Neue, Helvetica, sans-serif;
+				white-space: nowrap;
+				margin-right: 10px;
+				background-color: #f37b1d;
+		    }
+		    .span-df{
+		    	margin-left: 10px;
+		    	font-size: 14px;
+		    }
+		}
+		.center-wrap{
+			padding: 2px 0 5px;
 			.o-top-l{
-			    width:40%;
+			    width:130px;
+			    height: 128px;
 			    padding: 5px;
 			    box-sizing: border-box;
 			}
 			.o-top-r{
-			    width: 60%;
 			    color: #333;
 			    font-size: 12px;
 			    box-sizing: border-box;

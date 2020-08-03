@@ -77,27 +77,27 @@
 
 		</div>
 		<div class="foot-bar fixed bg-fff text-c">
-			<van-row>
-				<van-col span="12">
+			<div class="flex">
+				<div class="flex flex-1">
 					<!--mediumseagreen-->
-					<van-col span="12">
+					<div class="flex-1">
 						<div class="wrap flex home">
 							<p><span class="mui-icon iconfont icon-menu1 f20"></span></p>
 							<router-link tag="p" to="home">首页</router-link>
 						</div>
-					</van-col>
-					<van-col span="12">
+					</div>
+					<div class="flex-1">
 						<div class="wrap flex customer">
 							<p><span class="mui-icon iconfont icon-changyonglogo28 f20"></span></p>
 							<p @click="handleHelp">客服</p>
 						</div>
-					</van-col>
-				</van-col>
-				<van-col span="12">
-					<van-button  block :color="btnInfo.color" :disabled="btnInfo.disabled" class="f18" @click="submit">{{btnInfo.text}}</van-button>
-				</van-col>
+					</div>
+				</div>
+				<div class="flex-1 wrap">
+					<van-button  block :color="btnInfo.color" :disabled="btnInfo.disabled" class="vbtn f18" @click="submit">{{btnInfo.text}}</van-button>
+				</div>
 
-			</van-row>
+			</div>
 		</div>
 
 		<van-overlay :show="showOverlay" @click="showOverlay = false">
@@ -355,7 +355,7 @@
 			border-top: 1px solid #ccc;
 			box-shadow: 0 0 6px 1px #ccc;
 			/*no*/
-			/deep/ .wrap {
+			.wrap {
 				height: 50px;
 				/*no*/
 				line-height: initial;
@@ -370,7 +370,13 @@
 				&.customer {
 					border-left: 1px solid #ccc;
 				}
+				.vbtn{
+					/deep/ .van-button{
+						height: 100%;
+					}
+				}
 			}
+			
 		}
 		.overlay-wrapper {
 			width: 80%;

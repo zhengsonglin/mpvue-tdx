@@ -87,6 +87,10 @@
 					padding: 15px;
 					/*box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);*/
 					border: 3px solid rgba(220, 220, 220,0.5);
+					.p-img{
+						overflow: hidden;
+						.product-pic{height:auto}
+					}
 					.row{
 						align-items: center;
 						margin-bottom: 10px;
